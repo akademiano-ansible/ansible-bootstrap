@@ -1,0 +1,27 @@
+---
+# tasks file for bootstrap
+
+- hosts: all
+tasks:
+  - name: Add ansible repo
+  apt_repository:
+    repo: ppa:ansible/ansible
+  - name: Install python3
+  apt:
+    name: python3
+    state: latest
+    update_cache: yes
+  - name: Add ansible repo
+  apt_repository:
+    repo: ppa:ansible/ansible
+  - name: Install ansible
+  apt: 
+    name: ansible
+    state: latest
+  - name: Set cfg to default
+  # Fully quoted because of the ': ' on the line. See the Gotchas in the YAML docs.
+  lineinfile:
+    path: /etc/ansible/ansible.cfg
+    state: present
+    regexp: '#host_key_checking = False'
+    line: '#host_key_checking = True'

@@ -4,11 +4,6 @@
 - name: Add ansible repo
   apt_repository:
     repo: ppa:ansible/ansible
-- name: Install python3
-  apt:
-    name: python3
-    state: latest
-    update_cache: yes
 - name: Add ansible repo
   apt_repository:
     repo: ppa:ansible/ansible
@@ -16,9 +11,16 @@
   apt:
     name: ansible
     state: latest
-- name: Set cfg to default
+- name: Set cfg to disable host key check
   lineinfile:
     path: /etc/ansible/ansible.cfg
     state: present
     regexp: '#host_key_checking = False'
     line: 'host_key_checking = False'
+- name: Set cfg to disable ho
+  lineinfile:
+    path: /etc/ansible/ansible.cfg
+    state: present
+    regexp: '#roles_path    = /etc/ansible/roles'
+    line: 'roles_path    = /etc/ansible/roles'
+

@@ -4,19 +4,16 @@
 - name: Add ansible repo
   apt_repository:
     repo: ppa:ansible/ansible
+
 - name: Add ansible repo
   apt_repository:
     repo: ppa:ansible/ansible
+
 - name: Install ansible
   apt:
     name: ansible
     state: latest
-- name: Set cfg to disable host key check
-  lineinfile:
-    path: /etc/ansible/ansible.cfg
-    state: present
-    regexp: '#host_key_checking = False'
-    line: 'host_key_checking = False'
+
 - name: Set cfg to disable ho
   lineinfile:
     path: /etc/ansible/ansible.cfg

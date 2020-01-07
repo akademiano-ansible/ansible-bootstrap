@@ -1,9 +1,16 @@
 ---
 # tasks file for bootstrap
 
-- name: Add ansible repo
+- name: Add ansible repo Ubuntu
   apt_repository:
     repo: ppa:ansible/ansible
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Add ansible repo Debian 10
+  apt_repository:
+    repo: ppa:ansible/ansible
+    codename: bionic
+  when: ansible_distribution == 'Debian'
 
 - name: Install ansible
   apt:

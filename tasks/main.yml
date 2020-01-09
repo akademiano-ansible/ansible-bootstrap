@@ -17,7 +17,7 @@
     name: ansible
     state: latest
 
-- name: Set cfg to disable ho
+- name: Set default cfg
   lineinfile:
     path: /etc/ansible/ansible.cfg
     state: present
